@@ -2,9 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class AnotherMovement : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
@@ -12,7 +11,6 @@ public class AnotherMovement : MonoBehaviour
     [SerializeField] private LayerMask _ground;
 
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
     private Vector3 _xMovement;
     private bool _isOnGround;
@@ -20,7 +18,6 @@ public class AnotherMovement : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _xMovement = new Vector3(1 * _speed, 0, 0);
     }
@@ -38,7 +35,9 @@ public class AnotherMovement : MonoBehaviour
         {
             transform.Translate(_xMovement * Time.deltaTime);
             _animator.SetBool("IsRunning", true);
-            _spriteRenderer.flipX = false;
+
+            if (transform.localScale.x < 0)
+                FlipX();
         }
         else if (Input.GetKeyUp(KeyCode.D))
         {
@@ -49,12 +48,26 @@ public class AnotherMovement : MonoBehaviour
         {
             transform.Translate(_xMovement * Time.deltaTime * (-1));
             _animator.SetBool("IsRunning", true);
-            _spriteRenderer.flipX = true;
+
+            if (transform.localScale.x > 0)
+                FlipX();
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
             _animator.SetBool("IsRunning", false);
         }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            _animator.SetTrigger("Attack");
+        }
+    }
+
+    private void FlipX()
+    {
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 
     private void CheckingGround()

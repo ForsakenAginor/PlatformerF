@@ -763,6 +763,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a525f7b3fe65aac4fa2965df53480714, type: 3}
+--- !u!114 &523742252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7857015714165150821, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+  m_PrefabInstance: {fileID: 995250794785069452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c1efa6f9196cf4987aabaed579fb2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &529245671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36430,9 +36441,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2808462223032298876, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: _died.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2808462223032298876, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: _died.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 523742252}
+    - target: {fileID: 2808462223032298876, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: _died.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3466016391711102338, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857015714165150821, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: _xPosition
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857015714165150821, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: _yPosition
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315537556333348491, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8353638150700317537, guid: ae9753abcd735f645abdd99d1f880392, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
