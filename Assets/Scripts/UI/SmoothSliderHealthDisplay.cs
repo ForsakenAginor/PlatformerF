@@ -8,7 +8,7 @@ public class NewBehaviourScript : HealthDisplay
 {
     [SerializeField] private Slider _slider;
 
-    protected override void HealthChangeHandler(int value)
+    protected override void OnHealthChange(int value)
     {
         float duration = 1;
         _slider.maxValue = Health.MaxHealth;

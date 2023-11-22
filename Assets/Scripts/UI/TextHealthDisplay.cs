@@ -8,7 +8,7 @@ public class TextHealthDisplay : HealthDisplay
 {
     [SerializeField] private Text _text;
 
-    protected override void HealthChangeHandler(int value)
+    protected override void OnHealthChange(int value)
     {
         _text.text = value + " / " + Health.MaxHealth;
     }

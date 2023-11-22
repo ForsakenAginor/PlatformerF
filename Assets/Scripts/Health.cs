@@ -20,14 +20,14 @@ public abstract class Health : MonoBehaviour, IDamageTaker
 
             _currentHealth = value;
 
-            if (OnVariableChange != null)
-                OnVariableChange(_currentHealth);
+            if (HealthChange != null)
+                HealthChange(_currentHealth);
         }
     }
 
-    public delegate void OnVariableChangeDelegate(int value);
+    public delegate void HealthChangeDelegate(int value);
 
-    public event OnVariableChangeDelegate OnVariableChange;
+    public event HealthChangeDelegate HealthChange;
 
     public abstract void TakeDamage();
 

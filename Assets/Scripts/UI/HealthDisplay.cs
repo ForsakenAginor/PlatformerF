@@ -8,20 +8,20 @@ public abstract class HealthDisplay : MonoBehaviour
 
     protected Health Health => _health;
 
-    protected abstract void HealthChangeHandler(int value);
+    protected abstract void OnHealthChange(int value);
 
     private void Awake()
     {
-        HealthChangeHandler(_health.MaxHealth);
+        OnHealthChange(_health.MaxHealth);
     }
 
     private void Start()
     {
-        _health.OnVariableChange += HealthChangeHandler;
+        _health.HealthChange += OnHealthChange;
     }
 
     private void OnDestroy()
     {
-        _health.OnVariableChange -= HealthChangeHandler;
+        _health.HealthChange -= OnHealthChange;
     }
 }

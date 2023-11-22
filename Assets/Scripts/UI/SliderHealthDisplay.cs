@@ -8,7 +8,7 @@ public class SliderHealthDisplay : HealthDisplay
 {
     [SerializeField] private Slider _slider;
 
-    protected override void HealthChangeHandler(int value)
+    protected override void OnHealthChange(int value)
     {
         _slider.maxValue = Health.MaxHealth;
         _slider.value = value;
