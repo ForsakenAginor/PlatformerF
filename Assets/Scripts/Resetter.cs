@@ -6,7 +6,7 @@ public class Resetter : MonoBehaviour
     [SerializeField] private float _yPosition;
 
     private Vector3 _starterPosition;
-    private Player _player;
+    private PlayerHealth _player;
 
     public void Reset()
     {
@@ -17,6 +17,6 @@ public class Resetter : MonoBehaviour
     private void Awake()
     {
         _starterPosition = new Vector3(_xPosition, _yPosition, 0);
-        _player = GetComponent<Player>();
+        _player = GetComponent<PlayerHealth>();
     }
 }

@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Pickuper : MonoBehaviour
 { 
-    private Player _player;
+    private PlayerHealth _player;
 
     private void Awake()
     {
-        _player = GetComponent<Player>();
+        _player = GetComponent<PlayerHealth>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

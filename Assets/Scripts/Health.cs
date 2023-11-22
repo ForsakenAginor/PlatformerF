@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public abstract class Health : MonoBehaviour, IDamageTaker
 {
@@ -31,7 +28,6 @@ public abstract class Health : MonoBehaviour, IDamageTaker
     public delegate void OnVariableChangeDelegate(int value);
 
     public event OnVariableChangeDelegate OnVariableChange;
-
 
     public abstract void TakeDamage();
 

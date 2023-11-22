@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: -4832553701185355678}
   - component: {fileID: 7828842478797747845}
   - component: {fileID: 8011762732772434731}
-  - component: {fileID: 2808462223032298876}
   - component: {fileID: 7857015714165150821}
+  - component: {fileID: 5263378891283195946}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -322,7 +322,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e32aa2d29a52b841833b9b029b4de06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2808462223032298876
+--- !u!114 &7857015714165150821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466016391711102338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c1efa6f9196cf4987aabaed579fb2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xPosition: -7
+  _yPosition: -3
+--- !u!114 &5263378891283195946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,36 +366,10 @@ MonoBehaviour:
         m_CallState: 2
   _takeDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _takeHeal:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7857015714165150821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3466016391711102338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0c1efa6f9196cf4987aabaed579fb2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _xPosition: -7
-  _yPosition: -3
 --- !u!1 &8315537556333348491
 GameObject:
   m_ObjectHideFlags: 0
