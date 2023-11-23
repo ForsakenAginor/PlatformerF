@@ -8,15 +8,15 @@ public class Resetter : MonoBehaviour
     private Vector3 _starterPosition;
     private PlayerHealth _player;
 
-    public void Reset()
-    {
-        transform.position = _starterPosition;
-        _player.ResetHealth();
-    }
-
     private void Awake()
     {
         _starterPosition = new Vector3(_xPosition, _yPosition, 0);
         _player = GetComponent<PlayerHealth>();
+    }
+
+    public void Reset()
+    {
+        transform.position = _starterPosition;
+        _player.ResetHealth();
     }
 }

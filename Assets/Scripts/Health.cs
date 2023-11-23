@@ -25,14 +25,14 @@ public abstract class Health : MonoBehaviour, IDamageTaker
         }
     }
 
+    private void Awake()
+    {
+        _currentHealth = _maxHealth;
+    }
+
     public delegate void HealthChangeDelegate(int value);
 
     public event HealthChangeDelegate HealthChange;
 
     public abstract void TakeDamage();
-
-    private void Awake()
-    {
-        _currentHealth = _maxHealth;
-    }
 }

@@ -10,6 +10,17 @@ public class Enemy : MonoBehaviour, IDamageTaker
 
     public IEnemyState State { get; set; }
 
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        State = GetComponent<PatrollZoneEnemyState>();
+    }
+
+    private void Update()
+    {
+        State.DoEnemyThings();
+    }
+
     public void TakeDamage()
     {
         _health--;
@@ -23,16 +34,5 @@ public class Enemy : MonoBehaviour, IDamageTaker
             collider.enabled = false;
             Destroy(this);
         }
-    }
-
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-        State = GetComponent<PatrollZoneEnemyState>();
-    }
-
-    private void Update()
-    {
-        State.DoEnemyThings();
     }
 }

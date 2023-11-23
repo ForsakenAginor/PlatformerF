@@ -6,13 +6,13 @@ public class AttackAdapter : MonoBehaviour
 {
     private Attack _weapon;
 
-    public void OnAttack()
-    {
-        _weapon.OnAttack();
-    }    
-
     private void Awake()
     {
         _weapon = GetComponentInChildren<Attack>();
     }
+
+    public void OnAttack()
+    {
+        _weapon.OnAttack();
+    }    
 }

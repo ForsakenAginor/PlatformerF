@@ -14,18 +14,6 @@ public class CatchPlayerEnemyState : MonoBehaviour, IEnemyState
     private float _distance;
     private bool _isAttacking;
 
-    public void DoEnemyThings()
-    {
-        _distance = (_player.position - transform.position).magnitude;
-        _isAttacking = _distance < _attackRange;
-
-        if (_isAttacking == false)
-            transform.position = Vector3.MoveTowards(transform.position, _player.position, Time.deltaTime);
-
-        _animator.SetBool("IsAttacking", _isAttacking);
-        _flipper.FlipToTarget(_player);
-    }
-
     private void Awake()
     {
         _attackRange = GetComponentInChildren<Attack>().GetComponent<CircleCollider2D>().radius;
@@ -51,5 +39,17 @@ public class CatchPlayerEnemyState : MonoBehaviour, IEnemyState
             _enemyPatroller.State = _patrollingState;
             _animator.SetBool("IsAttacking", false);
         }
+    }
+
+    public void DoEnemyThings()
+    {
+        _distance = (_player.position - transform.position).magnitude;
+        _isAttacking = _distance < _attackRange;
+
+        if (_isAttacking == false)
+            transform.position = Vector3.MoveTowards(transform.position, _player.position, Time.deltaTime);
+
+        _animator.SetBool("IsAttacking", _isAttacking);
+        _flipper.FlipToTarget(_player);
     }
 }

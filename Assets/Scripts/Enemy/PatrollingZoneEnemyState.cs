@@ -11,6 +11,17 @@ public class PatrollZoneEnemyState : MonoBehaviour, IEnemyState
     private int _currentTargetIndex;
     private SpriteFlipper _flipper;
 
+    private void Awake()
+    {
+        _flipper = GetComponent<SpriteFlipper>();
+        _points = new Transform[_path.childCount];
+
+        for (int i = 0; i < _points.Length; i++)
+        {
+            _points[i] = _path.GetChild(i);
+        }
+    }
+
     public void DoEnemyThings()
     {
         transform.position = Vector3.MoveTowards(transform.position, _points[_currentTargetIndex].position, Time.deltaTime);
@@ -23,17 +34,6 @@ public class PatrollZoneEnemyState : MonoBehaviour, IEnemyState
 
         if (_currentTargetIndex == _points.Length)
             _currentTargetIndex = 0;
-    }
-
-    private void Awake()
-    {
-        _flipper = GetComponent<SpriteFlipper>();
-        _points = new Transform[_path.childCount];
-
-        for (int i = 0; i < _points.Length; i++)
-        {
-            _points[i] = _path.GetChild(i);
-        }
     }
 }
 
