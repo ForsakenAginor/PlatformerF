@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Health : MonoBehaviour, IDamageTaker
 {
     [SerializeField] private int _maxHealth;
 
     private int _currentHealth;
+
+    public event UnityAction<int> HealthChange;
 
     public int MaxHealth => _maxHealth;
     protected int CurrentHealth
@@ -29,10 +32,6 @@ public abstract class Health : MonoBehaviour, IDamageTaker
     {
         _currentHealth = _maxHealth;
     }
-
-    public delegate void HealthChangeDelegate(int value);
-
-    public event HealthChangeDelegate HealthChange;
 
     public abstract void TakeDamage();
 }

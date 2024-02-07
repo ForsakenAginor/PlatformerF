@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class NewBehaviourScript : HealthDisplay
+public class SmoothSliderHealthDisplay : HealthDisplay
 {
     [SerializeField] private Slider _slider;
 

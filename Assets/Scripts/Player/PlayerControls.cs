@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerControls : MonoBehaviour
 {
@@ -9,15 +7,14 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private CircleCollider2D _groundCheckCollider;
     [SerializeField] private LayerMask _ground;
+    [SerializeField] private Animator _animator;
 
-    private Animator _animator;
     private Rigidbody2D _rigidbody;
     private Vector3 _xMovement;
     private bool _isOnGround;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _xMovement = new Vector3(1 * _speed, 0, 0);
     }
@@ -36,7 +33,7 @@ public class PlayerControls : MonoBehaviour
             transform.Translate(_xMovement * Time.deltaTime);
             _animator.SetBool("IsRunning", true);
 
-            if (transform.localScale.x < 0)
+            if (_animator.transform.localScale.x < 0)
                 FlipX();
         }
         else if (Input.GetKeyUp(KeyCode.D))
@@ -49,7 +46,7 @@ public class PlayerControls : MonoBehaviour
             transform.Translate(_xMovement * Time.deltaTime * (-1));
             _animator.SetBool("IsRunning", true);
 
-            if (transform.localScale.x > 0)
+            if (_animator.transform.localScale.x > 0)
                 FlipX();
         }
         else if (Input.GetKeyUp(KeyCode.A))
@@ -65,9 +62,9 @@ public class PlayerControls : MonoBehaviour
 
     private void FlipX()
     {
-        Vector3 scaler = transform.localScale;
+        Vector3 scaler = _animator.transform.localScale;
         scaler.x *= -1;
-        transform.localScale = scaler;
+        _animator.transform.localScale = scaler;
     }
 
     private void CheckingGround()
@@ -79,4 +76,5 @@ public class PlayerControls : MonoBehaviour
         }
     }
 }
+
 

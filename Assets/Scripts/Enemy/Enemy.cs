@@ -2,18 +2,35 @@ using UnityEngine;
 
 [RequireComponent (typeof(BoxCollider2D))]
 [RequireComponent(typeof(PatrollZoneEnemyState))]
-public class Enemy : MonoBehaviour, IDamageTaker
+[RequireComponent(typeof(EnemyHealth))]
+[RequireComponent (typeof(Rigidbody2D))]
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    [SerializeField] private Animator _animator;
 
-    private Animator _animator;
+    private EnemyHealth _enemyHealth;
+    private Rigidbody2D _rigidbody;
+    private BoxCollider2D _boxCollider;
 
     public IEnemyState State { get; set; }
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _enemyHealth = GetComponent<EnemyHealth>();
+        _boxCollider = GetComponent<BoxCollider2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+
         State = GetComponent<PatrollZoneEnemyState>();
+    }
+
+    private void OnEnable()
+    {
+        _enemyHealth.Died += OnDied;
+    }
+
+    private void OnDisable()
+    {
+        _enemyHealth.Died -= OnDied;
     }
 
     private void Update()
@@ -21,18 +38,16 @@ public class Enemy : MonoBehaviour, IDamageTaker
         State.DoEnemyThings();
     }
 
-    public void TakeDamage()
+    private void OnDied()
     {
-        _health--;
+        const string IsDiyingAnimatorParameter = "IsDiying";
+        const string IsAttackingAnimatorParameter = "IsAttacking";
 
-        if (_health <= 0)
-        {
-            _animator.SetTrigger("IsDead");
-            Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-            BoxCollider2D collider = GetComponent<BoxCollider2D>();
-            rigidbody.bodyType = RigidbodyType2D.Static;
-            collider.enabled = false;
-            Destroy(this);
-        }
+        _animator.SetBool(IsDiyingAnimatorParameter, true);
+        _animator.SetBool(IsAttackingAnimatorParameter, false);
+        _rigidbody.bodyType = RigidbodyType2D.Static;
+        _boxCollider.enabled = false;
+
+        Destroy(this);
     }
 }
