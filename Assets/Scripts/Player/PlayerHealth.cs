@@ -17,4 +17,14 @@ public class PlayerHealth : Health
     {
         CurrentHealth = MaxHealth;
     }
+
+    public void RestoreHealth()
+    {
+        CurrentHealth++;
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        CurrentHealth += amount;
+    }
 }

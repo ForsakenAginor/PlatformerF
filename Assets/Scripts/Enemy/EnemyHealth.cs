@@ -11,4 +11,17 @@ public class EnemyHealth : Health
         if (CurrentHealth <= 0)
             Died?.Invoke();         
     }
+
+    public bool TryTakeDamage()
+    {
+        if(CurrentHealth <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            TakeDamage();
+            return true;
+        }
+    }
 }

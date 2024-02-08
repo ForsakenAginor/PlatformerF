@@ -21,10 +21,8 @@ public abstract class Health : MonoBehaviour, IDamageTaker
             if (_currentHealth == value)
                 return;
 
-            _currentHealth = value;
-
-            if (HealthChange != null)
-                HealthChange(_currentHealth);
+            _currentHealth = Mathf.Clamp(value, 0, _maxHealth);
+            HealthChange?.Invoke(_currentHealth);
         }
     }
 
